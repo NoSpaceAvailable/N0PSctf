@@ -76,7 +76,7 @@
 
 - It's fuzzing time again, and I find that we can use the `sed` command like this:
   ```shell
-  echo "lmao this is funny" | sed -e s/lmao/hehe/ (no apostrophe)
+  echo "lmao this is funny" | sed -e s/lmao/hehe/ #(no apostrophe)
   ```
   ![image](https://github.com/NoSpaceAvailable/N0PSctf/assets/143888307/a25ba8a3-c0bf-465b-a798-7259db684e54)
 
@@ -153,3 +153,9 @@
 
 # Flag
 - The flag is: N0PS{1badjojo}
+
+# Edit
+- If you try to extract metadata of the PDF terms file, you will see the author of PDF is the name of the tool which they used to make these PDF:
+  ![image](https://github.com/NoSpaceAvailable/N0PSctf/assets/143888307/62b0ce23-6ad9-408d-ac45-e51aed0e0d2e)
+
+- A closer look into this tool, combine with the #3 hint, you will know that there is a [weird behavior](https://github.com/wkhtmltopdf/wkhtmltopdf/issues/4536) in `wkhtmltopdf` (version affected <= 0.12.5). But in this challenge, they use version 0.12.6 (which local file access is disabled by default), so in the backend they must use the flag *--enable-local-file-access* 
